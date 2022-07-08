@@ -8,7 +8,12 @@
 /* tslint:disable */
 /* eslint-disable */
 export interface CreateStudentInput {
-    exampleField?: Nullable<number>;
+    _id?: Nullable<string>;
+    FirstName?: Nullable<string>;
+    LastName?: Nullable<string>;
+    Standard?: Nullable<number>;
+    FatherName?: Nullable<string>;
+    MotherName?: Nullable<string>;
 }
 
 export interface UpdateStudentInput {

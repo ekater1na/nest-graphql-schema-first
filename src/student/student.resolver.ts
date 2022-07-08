@@ -1,15 +1,16 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { StudentService } from './student.service';
-import { CreateStudentInput } from './dto/create-student.input';
 import { UpdateStudentInput } from './dto/update-student.input';
-import { Student } from 'src/graphql';
+import { Student, CreateStudentInput } from 'src/graphql';
 
 @Resolver('Student')
 export class StudentResolver {
   constructor(private readonly studentService: StudentService) {}
 
   @Mutation('createStudent')
-  create(@Args('createStudentInput') createStudentInput: CreateStudentInput) {
+  create(
+    @Args('createStudentInput') createStudentInput: CreateStudentInput,
+  ): Student {
     return this.studentService.create(createStudentInput);
   }
 
@@ -25,7 +26,10 @@ export class StudentResolver {
 
   @Mutation('updateStudent')
   update(@Args('updateStudentInput') updateStudentInput: UpdateStudentInput) {
-    return this.studentService.update(updateStudentInput.id, updateStudentInput);
+    return this.studentService.update(
+      updateStudentInput.id,
+      updateStudentInput,
+    );
   }
 
   @Mutation('removeStudent')

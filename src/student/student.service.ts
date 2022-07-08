@@ -5,7 +5,6 @@ import { UpdateStudentInput } from './dto/update-student.input';
 
 @Injectable()
 export class StudentService {
-
   students: Student[] = [
     {
       _id: 'abc1',
@@ -33,8 +32,9 @@ export class StudentService {
     },
   ];
 
-  create(createStudentInput: CreateStudentInput) {
-    return 'This action adds a new student';
+  create(CreateStudentInput: CreateStudentInput): Student {
+    this.students.push(CreateStudentInput);
+    return CreateStudentInput;
   }
 
   findAll() {
@@ -42,7 +42,7 @@ export class StudentService {
   }
 
   findOne(id: string) {
-    const filteredStudent = this.students.filter(_ => _._id === id)[0];
+    const filteredStudent = this.students.filter((_) => _._id === id)[0];
     return filteredStudent;
   }
 

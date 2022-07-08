@@ -7,9 +7,13 @@ type Student {
   MotherName: String
 }
 
-input CreateStudentInput {
-  # Example field (placeholder)
-  exampleField: Int
+input CreateStudentInput {  
+  _id: String
+  FirstName: String
+  LastName: String
+  Standard: Int
+  FatherName: String
+  MotherName: String
 }
 
 input UpdateStudentInput {
