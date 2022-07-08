@@ -1,19 +1,49 @@
 import { Injectable } from '@nestjs/common';
+import { Student } from 'src/graphql';
 import { CreateStudentInput } from './dto/create-student.input';
 import { UpdateStudentInput } from './dto/update-student.input';
 
 @Injectable()
 export class StudentService {
+
+  students: Student[] = [
+    {
+      _id: 'abc1',
+      FirstName: 'Alisa',
+      LastName: 'Ar',
+      Standard: 7,
+      FatherName: 'Anna Ar',
+      MotherName: 'Ally',
+    },
+    {
+      _id: 'abc2',
+      FirstName: 'Bob',
+      LastName: 'Boom',
+      Standard: 7,
+      FatherName: 'Barny',
+      MotherName: 'Beep',
+    },
+    {
+      _id: 'abc3',
+      FirstName: 'Camilla',
+      LastName: 'Camp',
+      Standard: 7,
+      FatherName: 'Celly',
+      MotherName: 'Caap',
+    },
+  ];
+
   create(createStudentInput: CreateStudentInput) {
     return 'This action adds a new student';
   }
 
   findAll() {
-    return `This action returns all student`;
+    return this.students;
   }
 
-  findOne(id: number) {
-    return `This action returns a #${id} student`;
+  findOne(id: string) {
+    const filteredStudent = this.students.filter(_ => _._id === id)[0];
+    return filteredStudent;
   }
 
   update(id: number, updateStudentInput: UpdateStudentInput) {

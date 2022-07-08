@@ -2,6 +2,7 @@ import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
 import { StudentService } from './student.service';
 import { CreateStudentInput } from './dto/create-student.input';
 import { UpdateStudentInput } from './dto/update-student.input';
+import { Student } from 'src/graphql';
 
 @Resolver('Student')
 export class StudentResolver {
@@ -13,12 +14,12 @@ export class StudentResolver {
   }
 
   @Query('getAllStudents')
-  findAll() {
+  findAll(): Student[] {
     return this.studentService.findAll();
   }
 
   @Query('getStudentById')
-  findOne(@Args('id') id: number) {
+  findOne(@Args('id') id: string): Student {
     return this.studentService.findOne(id);
   }
 
