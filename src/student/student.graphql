@@ -1,0 +1,28 @@
+type Student {
+  _id: String
+  FirstName: String
+  LastName: String
+  Standard: Int
+  FatherName: String
+  MotherName: String
+}
+
+input CreateStudentInput {
+  # Example field (placeholder)
+  exampleField: Int
+}
+
+input UpdateStudentInput {
+  id: Int!
+}
+
+type Query {
+  getAllStudents: [Student]!
+  getStudentById(id: String): Student
+}
+
+type Mutation {
+  createStudent(createStudentInput: CreateStudentInput!): Student!
+  updateStudent(updateStudentInput: UpdateStudentInput!): Student!
+  removeStudent(id: Int!): Student
+}
